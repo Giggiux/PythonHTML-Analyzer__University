@@ -51,8 +51,8 @@ def showExternalLink(linkdict):
 
 def load():
     while True:
-        choice = input('Do you want to analyze a file or an url? : ')
-        if choice != 'file' and choice != 'url':
+        choice = input('Do you want to analyze a file, an url or you want to quit? : ')
+        if choice != 'file' and choice != 'url' and choice != 'quit':
             print('ERROR: your choice is not valid. You can chose from \'file\' and \'url\'')
         elif choice == 'file':
             while True:
@@ -61,13 +61,15 @@ def load():
                     return soupify(loadFromFile(filepath))
                 except:
                     print('There is an Error in the path!')
-        else:
+        elif choice == 'url':
             while True:
                 try:
                     urllink = str(input('Please now insert the url of your page: '))
                     return soupify(loadFromUrl(urllink))
                 except:
                     print('There is an Error in the url!')
+        else:
+            exit()
 
 # web = load()
 # print(type(web.prettify()))
